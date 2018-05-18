@@ -91,7 +91,7 @@ def move_setup_1(ser):
   return val
 
 def soft_reset(ser):
-  val = send_msg('01', CMD_WRITE_VAR_SINGLE, ADDR_COMMAND, VAL_SOFT_RESET, ser)
+  val = send_msg('01', CMD_WRITE_VAR_SINGLE, ADDR_COMMAND, VAL_SOFT_RESET, ser, 1.5)
   return val
 
 def auto_tune_100(ser):
@@ -122,7 +122,7 @@ def set_onoff(ser):
 # Tuned for maximum reliable speed
 def read_temp(ser):
   #0001 for length of bytes
-  val = send_msg('01', CMD_READ_VAR_MULTIPLE, ADDR_PV, '0001', ser, 0.05)
+  val = send_msg('01', CMD_READ_VAR_MULTIPLE, ADDR_PV, '0001', ser, 0.06)
   if len(val) == 0:
     return -300 
   if val[1] & int('80', 16) != 0:
