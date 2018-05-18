@@ -29,7 +29,7 @@ while True:
       (LOWER_TEMP + STABILITY_TOL > pv):
 
       pv = e.read_temp(ser)
-      stable_time = time.perf_counter()
+      stable_time = t.perf_counter()
       if stable_time - stable_start > STABILITY_TIME:
         is_stable = True
         break
@@ -51,7 +51,7 @@ while (pv < UPPER_TEMP - 0.01):
 #Measure time elapsed and turn the temperature back down
 ramp_finish = t.perf_counter()
 e.set_pid(ser)
-e.set_temp(UPPER_TEMP)
+e.set_temp(UPPER_TEMP, ser)
 
 print('Time to ramp temperature from %3.1f to %3.1f is %.2f seconds' \
   % (LOWER_TEMP,UPPER_TEMP,ramp_finish-ramp_start))
