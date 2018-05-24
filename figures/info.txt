@@ -1,0 +1,2 @@
+Heating/cooling data acquired using 100% Duty cycle ramping between 80 and 120
+degrees celcius.
